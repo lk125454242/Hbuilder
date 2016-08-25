@@ -1,0 +1,101 @@
+{
+	"main.html": {
+		"refer": [
+			"setting.html",
+			"list/pullrefresh_main.html",
+			"list/main_list.html",
+			"component/list/main_list.html",
+			"component/list/list_content.html",
+			"component/list/list.html"
+		],
+		"resources": [
+			"js/app.js",
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"list/pullrefresh_main.html",
+			"list/main_list.html",
+			"component/list/main_list.html",
+			"component/list/list.html",
+			"fonts/mui.ttf"
+		]
+	},
+	"login.html": {
+		"resources": [
+			"js/app.js",
+			"js/mui.min.js",
+			"images/sinaweibo.png",
+			"css/mui.min.css",
+			"css/style.css",
+			"images/weixin.png",
+			"images/qq.png",
+			"js/mui.enterfocus.js",
+			"css/users/login.css",
+			"js/ajax.js",
+			"fonts/mui.ttf"
+		],
+		"refer": [
+			"main.html",
+			"unlock.html",
+			"reg.html"
+		]
+	},
+	"setting.html": {
+		"resources": [
+			"libs/easymob-webim-sdk/easemob.im-1.0.5.js",
+			"fonts/mui.ttf",
+			"libs/easymob-webim-sdk/json2.js",
+			"libs/easymob-webim-sdk/jquery-1.11.1.js",
+			"js/mui.locker.js",
+			"js/feedback.js",
+			"css/feedback-page.css",
+			"js/feedback-page.js",
+			"libs/easymob-webim-sdk/strophe-custom-2.0.0.js",
+			"js/mui.view.js",
+			"js/app.js",
+			"js/mui.min.js",
+			"css/mui.min.css"
+		],
+		"refer": [
+			"login.html"
+		]
+	},
+	"unlock.html": {
+		"resources": [
+			"js/mui.locker.js"
+		]
+	},
+	"component/list/main_list.html": {
+		"resources": [
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"js/ajax.js",
+			"js/lodash.min.js"
+		],
+		"refer": [
+			"component/list/list_content.html"
+		]
+	},
+	"component/list/list_content.html": {
+		"resources": [
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"js/ajax.js",
+			"js/lodash.min.js"
+		]
+	},
+	"component/list/list.html": {
+		"resources": [
+			"js/lodash.min.js",
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"js/ajax.js",
+			"js/zepto.min.js"
+		]
+	},
+	"reg.html": {
+		"resources": [
+			"fonts/mui.ttf"
+		]
+	}
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav" style="padding-right: 15px;">
+			<button class="mui-action-back mui-btn mui-btn-link"><span class="mui-icon mui-icon-back"></span>返回</button>
+			<h1 class="mui-title">Web-mobile</h1>
+			<button id='setting' class=" mui-pull-right mui-btn-link">设置</button>
+		</header>
+		<div class="mui-content"></div>
+		<script src="js/mui.min.js"></script>
+		<script src="js/app.js"></script>
+		<script>
+			mui.plusReady(function() {
+
+				(function($, doc) {
+					$.init({
+						gestureConfig: { //启用双击监听
+							doubletap: true
+						},
+						subpages: [{
+							url: './component/list/list.html', //子页面HTML地址，支持本地地址和网络地址
+							id: 'list', //子页面标志
+							styles: {
+								top: '45px', //子页面顶部位置
+								bottom: 0 //子页面底部位置
+							},
+							extras: {
+								page: 0,
+								pagesize: 10
+							} //额外扩展参数
+						}],
+						preloadPages: [{
+							url: './component/list/list_content.html',
+							id: 'list_content',
+							styles: {
+								top: '45px', //子页面顶部位置
+								bottom: 0 //子页面底部位置
+							}, //窗口参数
+							extras: {}, //自定义扩展参数
+							subpages: [{}, {}] //预加载页面的子页面
+						}]
+					});
+					/* 设置 菜单 */
+					var settings = app.getSettings();
+					var account = doc.getElementById('account');
+					//
+					/*window.addEventListener('show', function() {
+						var state = app.getState();
+						account.innerText = state.account;
+					}, false);*/
+					$.plusReady(function() {
+						var settingPage = $.preload({
+							"id": 'setting',
+							"url": 'setting.html'
+						});
+						//设置
+						var settingButton = doc.getElementById('setting');
+						//settingButton.style.display = settings.autoLogin ? 'block' : 'none';
+						settingButton.addEventListener('tap', function(event) {
+							$.openWindow({
+								id: 'setting',
+								show: {
+									aniShow: 'pop-in'
+								},
+								styles: {
+									popGesture: 'hide'
+								},
+								waiting: {
+									autoShow: false
+								}
+							});
+						});
+						//--
+						$.oldBack = mui.back;
+						var backButtonPress = 0,
+							timer;
+						$.back = function(event) {
+							backButtonPress++;
+							switch(backButtonPress) {
+								case 1:
+									plus.webview.hide(plus.webview.getTopWebview().id, 'slide-in-right', 200);
+									if(plus.webview.getTopWebview().id !== 'main'){
+										plus.webview.show('main', 'slide-in-right', 200);
+									}
+									break;
+								case 2:
+									plus.nativeUI.toast('再按一次退出应用');
+									break;
+								case 3:
+									plus.runtime.quit();
+									break;
+								default:
+									break;
+							}
+							if(!timer) {
+								setTimeout(function() {
+									timer = null;
+									backButtonPress = 0;
+								}, 1000);
+							}
+							return false;
+						};
+					});
+				}(mui, document));
+			})
+		</script>
+	</body>
+
+</html>
